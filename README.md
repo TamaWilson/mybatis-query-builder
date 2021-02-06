@@ -3,7 +3,7 @@
 **Mapeamento das Colunas**
 
 Para mapear as colunas é necessário uso da annotation *@MyBatisColumn*
-Essa anotaçao possui 4 atributos:
+Essa anotaçao possui 3 atributos:
 
 * **name**: Nome da coluna que representa o atributo do objeto no banco
 * **nestedClass**: Quando utilizar composição de classes, que signifiquem um relacionamento no banco, essa propriedade 
@@ -108,6 +108,7 @@ Todos os exemplos utilizam o mapeamento das classes Foo e Bar descritas acima.
 * Busca por duas condições informando como deve ser feita a conjunção/disjunção:
 
   `/foo?search=statusAtual:1|and,descricao:*Teste|or,quantidade>10`
+  
     *Obs.:* O conectivo deve ser informado após o campo de valor e deve ser separado por `|`
 
 
