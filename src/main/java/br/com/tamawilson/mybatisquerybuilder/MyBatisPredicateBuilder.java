@@ -1,29 +1,39 @@
 package br.com.tamawilson.mybatisquerybuilder;
 
 
+import br.com.tamawilson.mybatisquerybuilder.model.Operators;
 import br.com.tamawilson.mybatisquerybuilder.model.dto.SearchCriteria;
 import br.com.tamawilson.mybatisquerybuilder.model.dto.SearchCriteriaWrapper;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Component
 public class MyBatisPredicateBuilder {
 
-    private final List<SearchCriteria> params;
-    private final Class<?> clazz;
+    private List<SearchCriteria> params;
+    private  Class<?> clazz;
 
-    public MyBatisPredicateBuilder(Class<?> clazz) {
+   private final MyBatisPredicate predicate;
+
+    public MyBatisPredicateBuilder(MyBatisPredicate predicate) {
+        this.predicate = predicate;
         params = new ArrayList<>();
-        this.clazz = clazz;
     }
 
+    public MyBatisPredicateBuilder setClass(Class<?> clazz) {
+        this.clazz = clazz;
+        return this;
+    }
 
     public MyBatisPredicateBuilder withCriteria(
-            String key, String operation, Object value, String aggregator) {
+            String key, Operators operation, Object value, String aggregator) {
 
-        params.add(new SearchCriteria(key, operation, value, aggregator));
+        params = new ArrayList<>(Collections.singletonList(new SearchCriteria(key, operation, value, aggregator)));
 
         return this;
     }
@@ -31,7 +41,8 @@ public class MyBatisPredicateBuilder {
     public MyBatisPredicateBuilder withCriteria(
             SearchCriteriaWrapper searchCriteriaWrapper) {
         if (searchCriteriaWrapper != null) {
-            params.addAll(searchCriteriaWrapper.getSearchCriterias());
+
+            params = searchCriteriaWrapper.getSearchCriterias();
         }
 
         return this;
@@ -43,7 +54,6 @@ public class MyBatisPredicateBuilder {
         }
 
         return params.stream().map(param -> {
-            MyBatisPredicate predicate = new MyBatisPredicate();
 
             predicate.setClass(clazz).setCriteria(param).generatePredicate();
 
