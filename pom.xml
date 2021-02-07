@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.tamawilson</groupId>
     <artifactId>mybatis-query-builder</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>mybatis-query-builder</name>
     <description>Lib to help build custom querys for MyBatis on REST APIs.</description>
     <properties>
