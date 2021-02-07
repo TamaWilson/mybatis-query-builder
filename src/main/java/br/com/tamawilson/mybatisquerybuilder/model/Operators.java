@@ -16,8 +16,8 @@ public enum  Operators {
     IN("::"),
     NOT_IN("!::"),
     CONTAINS(":*"),
-    START_WITH(":*"),
-    END_WITH(":*");
+    START_WITH(">*"),
+    END_WITH("*<");
 
     @Getter
     private final String operator;
