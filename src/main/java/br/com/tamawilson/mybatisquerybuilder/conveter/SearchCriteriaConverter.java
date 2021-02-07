@@ -17,10 +17,10 @@ public class SearchCriteriaConverter implements Converter<String, SearchCriteria
             SearchCriteriaWrapper searchCriteriaWrapper = new SearchCriteriaWrapper();
 
             String operators = "!::|!:|::|:\\*|>\\*|\\*<|:|<|>";
-            Pattern pattern = Pattern.compile("([^,].*?)(" + operators + ")(\\(.*\\)|.*?)(?:(\\|)(and|or))?(?=,|$)");
+            Pattern pattern = Pattern.compile("(\\w+([.]?[\\w]+)+)(" + operators + ")([\\w(,)\\s]+)(?:(\\|)(and|or))?(?=,|$)");
             Matcher matcher = pattern.matcher(search);
             while (matcher.find()) {
-                SearchCriteria sc = new SearchCriteria(matcher.group(1), Operators.get(matcher.group(2)), matcher.group(3), matcher.group(5));
+                SearchCriteria sc = new SearchCriteria(matcher.group(1), Operators.get(matcher.group(3)), matcher.group(4), matcher.group(6));
                 searchCriteriaWrapper.add(sc);
             }
             return searchCriteriaWrapper;
