@@ -1,17 +1,19 @@
 package br.com.tamawilson.mybatisquerybuilder;
 
 
+import br.com.tamawilson.mybatisquerybuilder.model.Operators;
 import br.com.tamawilson.mybatisquerybuilder.model.dto.SearchCriteria;
 import br.com.tamawilson.mybatisquerybuilder.model.dto.SearchCriteriaWrapper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class MyBatisPredicateBuilder {
 
-    private final List<SearchCriteria> params;
+    private List<SearchCriteria> params;
     private final Class<?> clazz;
 
     public MyBatisPredicateBuilder(Class<?> clazz) {
@@ -21,9 +23,9 @@ public class MyBatisPredicateBuilder {
 
 
     public MyBatisPredicateBuilder withCriteria(
-            String key, String operation, Object value, String aggregator) {
+            String key, Operators operation, Object value, String aggregator) {
 
-        params.add(new SearchCriteria(key, operation, value, aggregator));
+        params = new ArrayList<>(Collections.singletonList(new SearchCriteria(key, operation, value, aggregator)));
 
         return this;
     }
@@ -31,7 +33,8 @@ public class MyBatisPredicateBuilder {
     public MyBatisPredicateBuilder withCriteria(
             SearchCriteriaWrapper searchCriteriaWrapper) {
         if (searchCriteriaWrapper != null) {
-            params.addAll(searchCriteriaWrapper.getSearchCriterias());
+
+            params = searchCriteriaWrapper.getSearchCriterias();
         }
 
         return this;
