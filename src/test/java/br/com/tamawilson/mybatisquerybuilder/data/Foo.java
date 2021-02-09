@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -24,6 +26,11 @@ public class Foo {
     @MyBatisColumn(name = "aaa00_description")
     private String description;
 
+    private LocalDate createdAt;
+
     @MyBatisColumn(name= "aaa00_id_bar", nestedClass = Bar.class, rootAs = Long.class)
     private Bar bar;
+
+    @MyBatisColumn(nestedClass = Bar.class)
+    private Fon fon;
 }

@@ -1,6 +1,5 @@
 package br.com.tamawilson.mybatisquerybuilder.data;
 
-import br.com.tamawilson.mybatisquerybuilder.model.annotation.MyBatisColumn;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,13 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Bar {
+public class Fon {
 
-    @MyBatisColumn(name = "AAA01_id")
     private Long id;
-
-    @MyBatisColumn(name = "AAA01_comments")
-    private String comments;
-
-    private Integer serial;
 }
