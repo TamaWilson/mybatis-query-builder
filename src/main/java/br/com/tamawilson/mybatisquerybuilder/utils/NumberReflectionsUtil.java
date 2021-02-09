@@ -18,8 +18,8 @@ public class NumberReflectionsUtil {
         NUMBER_REFLECTED_PRIMITIVES = s;
     }
 
-    private NumberReflectionsUtil() throws IllegalAccessException {
-        throw new IllegalAccessException("Classe utilitária");
+    private NumberReflectionsUtil() {
+        throw new IllegalStateException("Classe utilitária");
     }
 
     public static boolean isReflectedAsNumber(Class<?> type) {
