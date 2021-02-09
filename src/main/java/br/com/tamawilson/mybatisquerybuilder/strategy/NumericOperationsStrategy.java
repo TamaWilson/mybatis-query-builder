@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class NumericOperationsStrategy implements PredicateStrategy {
     @Override
     public PredicateStrategyType getStrategyType() {
-        return PredicateStrategyType.BASIC_OPERATIONS;
+        return PredicateStrategyType.NUMERIC_OPERATIONS;
     }
 
     @Override
