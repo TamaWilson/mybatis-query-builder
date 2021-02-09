@@ -10,8 +10,8 @@ import java.lang.reflect.Field;
 
 public class MyBatisColumnUtil {
 
-    private MyBatisColumnUtil() throws IllegalAccessException {
-        throw new IllegalAccessException("Classe utilitária");
+    private MyBatisColumnUtil() {
+        throw new IllegalStateException("Classe utilitária");
     }
 
     public static MappedField extractColumn(String fieldPath, Class<?> currentClass) {
@@ -36,7 +36,7 @@ public class MyBatisColumnUtil {
                     return extractColumn(path[1], property.nestedClass());
                 }
             }
-            throw new MyBatisColumnException(String.format("Não é possível pesquisar por: %s", path[0]));
+            throw new MyBatisColumnException(String.format("Não é possível utilizar o campo: %s", path[0]));
         } catch (NoSuchFieldException e) {
             throw new MyBatisColumnException(String.format("O campo %s não existe na entidade %s",
                     e.getMessage(), currentClass.getSimpleName()));
