@@ -10,8 +10,6 @@ public enum PredicateStrategyType {
     NUMERIC_OPERATIONS("numeric_operations"),
     STRING_OPERATIONS("string_operations");
 
-
-
     @Getter
     private final String typeName;
 }
