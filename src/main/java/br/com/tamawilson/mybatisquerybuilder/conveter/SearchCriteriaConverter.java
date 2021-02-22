@@ -11,16 +11,17 @@ import java.util.regex.Pattern;
 
 public class SearchCriteriaConverter implements Converter<String, SearchCriteriaWrapper> {
 
+    private String operators = "!::|!:|::|:\\*|>\\*|\\*<|:|<|>";
+
     @Override
     public SearchCriteriaWrapper convert(@Nullable String search) {
         if (search != null) {
             SearchCriteriaWrapper searchCriteriaWrapper = new SearchCriteriaWrapper();
 
-            String operators = "!::|!:|::|:\\*|>\\*|\\*<|:|<|>";
-            Pattern pattern = Pattern.compile("(\\w+([.]?[\\w]+)+)(" + operators + ")([\\w(,)\\s]+)(?:(\\|)(and|or))?(?=,|$)");
+            Pattern pattern = Pattern.compile("([^,].*?)(" + operators + ")(\\(.*\\)|.*?)(?:(\\|)(and|or))?(?=,|$)");
             Matcher matcher = pattern.matcher(search);
             while (matcher.find()) {
-                SearchCriteria sc = new SearchCriteria(matcher.group(1), Operators.get(matcher.group(3)), matcher.group(4), matcher.group(6));
+                SearchCriteria sc = new SearchCriteria(matcher.group(1), Operators.get(matcher.group(2)), matcher.group(3), matcher.group(5));
                 searchCriteriaWrapper.add(sc);
             }
             return searchCriteriaWrapper;
