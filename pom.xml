@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.tamawilson</groupId>
     <artifactId>mybatis-query-builder</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.1.0-NAPSHOT</version>
     <name>mybatis-query-builder</name>
     <description>Lib to help build custom querys for MyBatis on REST APIs.</description>
 
@@ -44,6 +44,22 @@
             <artifactId>mockito-inline</artifactId>
             <version>3.7.7</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>3.14.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>3.14.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>3.14.7</version>
         </dependency>
 
     </dependencies>
