@@ -26,7 +26,7 @@ public class NumericOperationsStrategy implements PredicateStrategy {
     @Override
     public Condition getCondition(SearchCriteria criteria, MappedField mappedField) {
         Condition condition = DSL.noCondition();
-        Number value  = Double.valueOf((String) criteria.getValue());
+        Number value  = Double.valueOf(String.valueOf(criteria.getValue()));
 
         Field<Double> field = DSL.field(mappedField.getColumnName(), Double.class);
 
