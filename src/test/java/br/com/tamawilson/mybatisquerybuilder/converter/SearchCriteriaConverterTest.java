@@ -40,12 +40,10 @@ class SearchCriteriaConverterTest {
     @Test
     void shouldReturnAEmptySearchCriteriaWrapper_WhenAInvalidPatternIsPassed(){
         String validPattern1 = "searchxx1";
-        String validPattern2 = "search:>(1,2)";
-        String validPattern3 = "search**hello world";
+        String validPattern2 = "search**hello world";
 
         Assertions.assertThat(Objects.requireNonNull(searchCriteriaConverter.convert(validPattern1)).getSearchCriterias()).isEmpty();
         Assertions.assertThat(Objects.requireNonNull(searchCriteriaConverter.convert(validPattern2)).getSearchCriterias()).isEmpty();
-        Assertions.assertThat(Objects.requireNonNull(searchCriteriaConverter.convert(validPattern3)).getSearchCriterias()).isEmpty();
     }
 
     @Test

@@ -96,13 +96,13 @@ class StringOperationsStrategyTest {
     void shouldReturnASTART_WITHPredicate_givenASearchCriteriaAndMappedField() {
         searchCriteria.setOperation(Operators.START_WITH);
         String predicate = strategy.getPredicate(searchCriteria, mappedField);
-        Assertions.assertThat(predicate).isNotNull().contains(" ilike").contains("TESTE%");
+        Assertions.assertThat(predicate).isNotNull().contains(" ilike").contains("'TESTE' || '%'");
     }
 
     @Test
     void shouldReturnAEND_WITHPredicate_givenASearchCriteriaAndMappedField() {
         searchCriteria.setOperation(Operators.END_WITH);
         String predicate = strategy.getPredicate(searchCriteria, mappedField);
-        Assertions.assertThat(predicate).isNotNull().contains(" ilike").contains("%TESTE");
+        Assertions.assertThat(predicate).isNotNull().contains(" ilike").contains("'%' || 'TESTE'");
     }
 }
