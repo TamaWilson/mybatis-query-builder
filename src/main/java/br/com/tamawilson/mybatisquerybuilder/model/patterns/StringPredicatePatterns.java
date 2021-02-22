@@ -2,10 +2,10 @@ package br.com.tamawilson.mybatisquerybuilder.model.patterns;
 
 public class StringPredicatePatterns {
 
-    public static final String EQUAL = "unaccent(%s) = unaccent('%s')";
-    public static final String CONTAINS = "unaccent(%s) ilike unaccent('%%%s%%')";
-    public static final String STARTS_WITH = "unaccent(%s) ilike unaccent('%s%%')";
-    public static final String ENDS_WITH = "unaccent(%s) ilike unaccent('%%%s')";
+    public static final String EQUAL = "unaccent({0}) = unaccent({1})";
+    public static final String CONTAINS = "unaccent({0}) ilike unaccent('%' || {1} || '%')";
+    public static final String STARTS_WITH = "unaccent({0}) ilike unaccent({1} || '%')";
+    public static final String ENDS_WITH = "unaccent({0}) ilike unaccent('%' || {1})";
 
     private StringPredicatePatterns() {
     }

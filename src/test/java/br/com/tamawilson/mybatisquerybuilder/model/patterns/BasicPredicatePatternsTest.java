@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 
 class BasicPredicatePatternsTest {
 
-    static final String EQUAL = "%s = %s";
-    static final String NOT_EQUALS = "%s != %s";
-    static final String GREATER_THAN = "%s > %s";
-    static final String LOWER_THAN = "%s < %s";
-    static final String IN = "%s in %s";
-    static final String NOT_IN = "%s not in %s";
+    public static final String EQUAL = "? = ?";
+    public static final String NOT_EQUALS = "? != ?";
+    public static final String GREATER_THAN = "? > ?";
+    public static final String LOWER_THAN = "? < ?";
+    public static final String IN = "? in ?";
+    public static final String NOT_IN = "? not in ?";
 
     @Test
     void shouldReturnCorrectBasicPredicates() {
